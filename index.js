@@ -42,3 +42,52 @@ const numToBoolean = Boolean(0); // false (Falsy value)
 const stringToBoolean = Boolean("hello"); // true (Truthy value)
 console.log(`0 to Boolean: ${numToBoolean}`);
 console.log(`"hello" to Boolean: ${stringToBoolean}`);
+
+// 4. String method challenge
+const rawInput = "  Hello world! This is a test.  ";
+const searchWord = "world";
+
+// Chain methods together for efficient manipulation
+const processedString = rawInput.trim()              // 1. Remove leading/trailing whitespace
+                                .toUpperCase()       // 2. Convert to uppercase
+                                .replace("TEST", "CHALLENGE"); // 3. Replace 'TEST' with 'CHALLENGE'
+
+// Other methods
+const lowerCaseString = processedString.toLowerCase();
+
+const includesCheck = processedString.includes(searchWord.toUpperCase());
+
+const wordsArray = lowerCaseString.split(" "); // Split the string into an array of words
+
+console.log("\nChallenge 4 Output:");
+console.log(`Processed String: ${processedString}`);
+console.log(`Includes '${searchWord.toUpperCase()}'? ${includesCheck}`);
+console.log(`Words Array (Split): ${wordsArray}`);
+
+
+//5. KGL data formatting Task
+
+const rawDealerData = "  KGL-4789|Maganjo Millers | Maize | 02-12-2025  ";
+
+// 1. Clean and Validate Input (Trim and Uppercase)
+const trimmedData = rawDealerData.trim();
+const upperCaseData = trimmedData.toUpperCase();
+
+// 2. Split the data into individual components (using the | separator)
+const dataArray = upperCaseData.split("|");
+
+// 3. Process each component to remove extra spaces (mapping trim over the array)
+const formattedData = dataArray.map(item => item.trim());
+
+// 4. Use Template Literals (Day 1/Challenge 2) for final structured output
+const [productCode, dealerNameRecord, productName, procurementDate] = formattedData;
+
+const dbRecord = {
+    Code: productCode,
+    Dealer: dealerNameRecord,
+    Product: productName,
+    Date: procurementDate
+};
+
+console.log("\nChallenge 5 Output (Final Database Record):");
+console.log(dbRecord);
